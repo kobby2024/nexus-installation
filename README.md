@@ -10,9 +10,11 @@ Attach Security Group to EC2 Instance.
 Install java openJDK 1.8+ for Nexus version 3.15
 Create nexus user to manage the Nexus server
 #As a good security practice, Nexus is not advised to run nexus service as a root user, 
+
 # so create a new user called nexus and grant sudo access to manage nexus services as follows. 
 sudo hostnamectl set-hostname nexus
 sudo useradd nexus
+
 # Grand sudo access to nexus user
 sudo echo "nexus ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/nexus
 sudo su - nexus
@@ -26,12 +28,14 @@ sudo tar -zxvf nexus-3.15.2-01-unix.tar.gz
 sudo mv /opt/nexus-3.15.2-01 /opt/nexus
 sudo rm -rf nexus-3.15.2-01-unix.tar.gz
 Grant permissions for nexus user to start and manage nexus service
+
 # Change the owner and group permissions to /opt/nexus and /opt/sonatype-work directories.
 sudo chown -R nexus:nexus /opt/nexus
 sudo chown -R nexus:nexus /opt/sonatype-work
 sudo chmod -R 775 /opt/nexus
 sudo chmod -R 775 /opt/sonatype-work
 Open /opt/nexus/bin/nexus.rc file and uncomment run_as_user parameter and set as nexus user.
+
 # change from #run_as_user="" to [ run_as_user="nexus" ]
 echo  'run_as_user="nexus" ' > /opt/nexus/bin/nexus.rc
 CONFIGURE NEXUS TO RUN AS A SERVICE
