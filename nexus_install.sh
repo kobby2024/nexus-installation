@@ -19,6 +19,7 @@ sudo yum install java-17-openjdk-devel -y
 sudo wget -O nexus.tar.gz https://download.sonatype.com/nexus/3/latest-unix.tar.gz
 sudo tar -xvf nexus.tar.gz
 sudo mv /opt/nexus-3* /opt/nexus
+sudo rm -rf nexus.tar.gz
 #5 Change the owner and group permissions to /opt/nexus and /opt/sonatype-work directories.
 sudo chown -R nexus:nexus /opt/nexus
 sudo chown -R nexus:nexus /opt/sonatype-work
